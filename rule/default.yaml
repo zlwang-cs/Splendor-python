@@ -1,0 +1,15 @@
+name:
+  default
+
+seed:
+  1234
+
+hero:
+  num: 10
+
+card:
+  num: 50
+
+coin:
+  num: 10
+  sp: 5
