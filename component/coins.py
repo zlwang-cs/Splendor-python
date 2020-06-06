@@ -6,8 +6,14 @@ class Coins:
         self.ENV = env
 
         colors = env.constant.colors
-        num = env.rule.coin.num
-        sp = env.rule.coin.sp
 
-        self.status = EasyDict({c: num} for c in colors)
-        self.special = sp
+        self.status = EasyDict({c: 0 for c in colors})
+        self.gold = 0
+
+    def env_init(self):
+        num = self.ENV.rule.coin.num
+        sp = self.ENV.rule.coin.sp
+
+        for k in self.status:
+            self.status[k] = num
+        self.gold = sp

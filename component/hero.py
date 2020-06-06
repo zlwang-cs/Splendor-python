@@ -17,11 +17,21 @@ class Hero:
             self.point = 3
             self.cost = {}
 
+    def __repr__(self):
+        s = f"{self.name}\tpoint: {self.point}\tcost: "
+        for k, v in self.cost.items():
+            s += f"{k}={v} "
+        return s
+
+    def __lt__(self, other):
+        return self.name < other.name
+
     @staticmethod
     def generate(env, name):
         card_dir = os.path.join('element', env.rule.name, 'heroes')
 
         info = {
+            'name': name,
             'cost': {s: random.randint(0, 3) for s in env.constant.colors},
         }
 
