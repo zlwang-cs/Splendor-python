@@ -78,3 +78,11 @@ class Table:
 
     def init_hero_shown(self):
         return sorted(list(random.sample(self.all_heroes, 5)))
+
+    def get_card_by_id(self, s):
+        level, idx = s.split('+')
+        level = int(level)
+        idx = int(idx)
+        card = self.cards[level][idx]
+        return card
+

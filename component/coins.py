@@ -17,3 +17,11 @@ class Coins:
         for k in self.status:
             self.status[k] = num
         self.gold = sp
+
+    def change(self, change, minus=False):
+        factor = -1 if minus else 1
+        for k, v in change.items():
+            if k == 'gold':
+                self.gold += v*factor
+            else:
+                self.status[k] += v*factor

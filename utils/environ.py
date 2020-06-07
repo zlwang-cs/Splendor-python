@@ -6,6 +6,7 @@ import string
 import yaml
 from easydict import EasyDict
 
+import component.player.move as move
 from component.card import Card
 from component.hero import Hero
 
@@ -17,7 +18,8 @@ class Env:
         self.constant = EasyDict({
                 'colors': ['black', 'white', 'red', 'blue', 'green'],
                 'mid_line': '-' * 100,
-                'db_mid_line': '=' * 100
+                'db_mid_line': '=' * 100,
+                'moves': {n: getattr(move, n)() for n in move.Move.choices}
             }
         )
 

@@ -11,7 +11,7 @@ class Card:
             info = json.load(open(path))
             self.name = info['name']
             self.color = info['color']
-            self.point = info['level']
+            self.point = info['point']
             self.cost = info['cost']
             self.level = info['level']
         else:

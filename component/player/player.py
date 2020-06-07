@@ -1,4 +1,5 @@
 from component.coins import Coins
+from component.player.decide import InteractiveDecider
 
 
 class Player:
@@ -12,8 +13,10 @@ class Player:
         self.coins = Coins(env)
         self.heroes = []
 
+        self.decider = InteractiveDecider(env, self)
+
     def __repr__(self):
-        s = ""
+        s = f"points: {self.points}\t"
         for k, v in self.power.items():
             s += f"{k}={v} "
         return s
@@ -35,3 +38,13 @@ class Player:
         for card in self.cards:
             points += card.point
         self.points = points
+
+    def update(self):
+        self.update_points()
+        self.update_power()
+
+    def move(self, table):
+        result = self.decider.decide(table)
+        result.move.accept(player=self, table=table, args=result)
+
+
